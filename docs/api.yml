@@ -4,8 +4,8 @@ info:
   version: "1.0.0"
   description: "Mahe blr conference api"
 servers:
-  - url: "http://localhost:8080"
-    description: "Local server"
+  - url: "https://manipal-blr-conference-backend-production.up.railway.app/"
+    description: "production server"
 paths:
   /register:
     post:

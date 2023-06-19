@@ -7,8 +7,8 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8080",
-            "description": "Local server"
+            "url": "https://manipal-blr-conference-backend-production.up.railway.app/",
+            "description": "Production server"
         }
     ],
     "paths": {
