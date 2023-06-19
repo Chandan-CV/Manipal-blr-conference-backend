@@ -1,0 +1,87 @@
+openapi: 3.0
+info:
+  title: "Mahe blr conference api"
+  version: "1.0.0"
+  description: "Mahe blr conference api"
+servers:
+  - url: "http://localhost:8080"
+    description: "Local server"
+paths:
+  /register:
+    post:
+      summary: "Register a new user"
+      operationId: "registerUser"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: "User registered successfully"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+                
+
+
+
+
+
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - name
+        - email
+        - institution
+      properties:
+        name:
+          type: string
+          exmaple: "Chandan C V"
+        email:
+          type: string
+          example: "chandancvp08@gmail.com"
+        institution:
+          type: string
+          example: "Mahe Bangalore"
+        uid:
+          type: string
+          example: "1234567890"
+        phone:
+          type: string
+          example: "1234567890"
+        address:
+          type: string
+          example: "221b Baker Street, Marylebone, London NW1 6XE."
+        honorfic:
+          type: string
+          example: Mr
+        date:
+          type: string
+          exmaple: "19/12/2020"
+        accommodation:
+          type: string
+          example: "Yes"
+        mahe_staff:
+          type: string
+          example: "Yes"
+        category:
+          type: string
+          example: "Student"
+        amount:
+          type: string
+          example: "4000"
+        currency:
+          type: string
+          example: "INR"
+        payment_status:
+          type: string
+          example: "Paid"
+        payment_gateway:
+          type: string
+          example: "Paytm"
+
