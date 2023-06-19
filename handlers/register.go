@@ -16,4 +16,7 @@ func Register(c *gin.Context) {
 		})
 		return
 	}
+	c.JSON(200, gin.H{
+		"message": "User Created Successfully",
+	})
 }

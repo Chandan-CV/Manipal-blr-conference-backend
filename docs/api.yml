@@ -22,12 +22,168 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
-                
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User created successfully"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"    
 
+  /signup:
+    post:
+      summary: "creating a new user"
+      operationId: "signupUser"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthReqBody"
+      responses:
+        "200":
+          description: "User registered successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: "#/components/schemas/User"
+                  message:
+                    type: string
+                    example: "User created successfully"
+                  
+                  
 
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
 
+        "400":
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+        "409":
+          description: "User already exists"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User already exists"
 
+  /login:
+    post:
+      summary: "Login a user"
+      operationId: "loginUser"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthReqBody"
+      responses:
+        "200":
+          description: "User logged in successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "user logged in! and token sent as a cookie"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+        "400":
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid credentials"
+
+  /logout:
+    get:
+      summary: "Logout a user"
+      operationId: "logoutUser"
+      responses:
+        "200":
+          description: "User logged out successfully"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "user logged out!"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+        "400":
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalServerError"
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid credentials"
+
+  /validate:
+    get:
+      summary: "check if the user is logged in"
+      responses:
+        "401":
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "token not found, please login"
+        "200":
+          description: "User logged in"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthUser"
 
 
 components:
@@ -69,6 +225,9 @@ components:
         mahe_staff:
           type: string
           example: "Yes"
+        mahe_roll_no:
+          type: string
+          example: "1234567890"
         category:
           type: string
           example: "Student"
@@ -84,4 +243,33 @@ components:
         payment_gateway:
           type: string
           example: "Paytm"
-
+    InternalServerError:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "error message"
+    AuthReqBody:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: "chandancvp08@gmail.com"
+        password:
+          type: string
+          example: "123456"
+    AuthUser:
+      type: object
+      properties:
+        email:
+          type: string
+          example: "chandancvp08@gmail.com"    
+        password:
+          type: string
+          example: "$2a$10$jM5MnuohzjpqqAbq8Vtkb.qncwzmYuX69u.VDlJlU.bEScNwXl8F2"
+        email_verified:
+          type: boolean
+          example: false

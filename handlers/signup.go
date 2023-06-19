@@ -26,7 +26,7 @@ func SignUP(c *gin.Context) {
 	db.DB.Table("auth").Where("email = ?", body.Email).Count(&count)
 
 	if count != 0 {
-		c.JSON(400, gin.H{
+		c.JSON(409, gin.H{
 			"message": "User already exists",
 		})
 		return

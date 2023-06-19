@@ -28,7 +28,7 @@ func Login(c *gin.Context) {
 	err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(body.Password))
 
 	if err != nil {
-		c.JSON(400, gin.H{
+		c.JSON(401, gin.H{
 			"message": "Incorrect password",
 		})
 		return
