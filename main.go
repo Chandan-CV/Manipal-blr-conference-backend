@@ -19,7 +19,7 @@ func main() {
 	// connecting to the database
 	db.Connect()
 	// migrating the database
-	db.MigrageDB()
+	// db.MigrageDB()
 
 	r := gin.Default()
 
