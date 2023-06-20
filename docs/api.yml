@@ -185,7 +185,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/AuthUser"
 
-
+  
 components:
   schemas:
     User:

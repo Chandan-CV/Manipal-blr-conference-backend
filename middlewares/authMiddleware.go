@@ -58,7 +58,7 @@ func ReqAuth(c *gin.Context) {
 
 		// find user by id
 		var user models.Auth
-		db.DB.Table("auths").Where("email = ?", claims["sub"]).First(&user)
+		db.DB.Table("auths").Where("email = ?", claims["email"]).First(&user)
 
 		if user.Email == "" {
 			c.AbortWithStatusJSON(http.StatusNotFound, gin.H{

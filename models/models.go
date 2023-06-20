@@ -1,5 +1,7 @@
 package models
 
+import "gorm.io/gorm"
+
 type User struct {
 	ID            uint   `json:"id" gorm:"primary_key"`
 	Name          string `json:"name" gorm:"not null"`
@@ -19,7 +21,24 @@ type User struct {
 }
 
 type Auth struct {
+	ID            uint   `json:"id" gorm:"primary_key; not null; unique"`
 	Email         string `json:"email" gorm:"not null; unique"`
 	Password      string `json:"password" gorm:"not null; unique"`
 	EmailVerified bool   `json:"email_verified" gorm:"not null"`
+}
+
+type Event struct {
+	ID          uint   `json:"id" gorm:"primary_key"`
+	Name        string `json:"name" gorm:"not null"`
+	Description string `json:"description" gorm:"not null"`
+}
+
+type Attendance struct {
+	gorm.Model
+	ID      uint  `json:"id" gorm:"primary_key"`
+	EventID uint  `json:"event_id" gorm:"not null"`
+	UserID  uint  `json:"user_id" gorm:"not null"`
+	Event   Event `json:"event" gorm:"not null"`
+	User    User  `json:"user" gorm:"not null"`
+	IsFood  bool  `json:"is_food"`
 }

@@ -44,8 +44,9 @@ func Login(c *gin.Context) {
 	key = []byte(os.Getenv("SECRET"))
 	t = jwt.NewWithClaims(jwt.SigningMethodHS256,
 		jwt.MapClaims{
-			"sub": user.Email,
-			"exp": time.Now().Add(time.Hour * 24 * 30).Unix(),
+			"sub":   user.ID,
+			"email": user.Email,
+			"exp":   time.Now().Add(time.Hour * 24 * 30).Unix(),
 		},
 	)
 	s, err = t.SignedString(key)
