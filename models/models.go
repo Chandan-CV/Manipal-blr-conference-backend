@@ -31,6 +31,7 @@ type Event struct {
 	ID          uint   `json:"id" gorm:"primary_key"`
 	Name        string `json:"name" gorm:"not null"`
 	Description string `json:"description" gorm:"not null"`
+	IsFood      bool   `json:"is_food" gorm:"not null"`
 }
 
 type Attendance struct {

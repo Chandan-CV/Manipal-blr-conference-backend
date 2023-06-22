@@ -22,7 +22,7 @@ func main() {
 	// db.MigrageDB()
 
 	r := gin.Default()
-
+	r.Use(middlewares.CORSMiddleware())
 	r.GET("/ping", handlers.Ping)
 	r.POST("/register", handlers.Register)
 	r.POST("/signup", handlers.SignUP)

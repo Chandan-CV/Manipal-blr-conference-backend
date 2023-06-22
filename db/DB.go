@@ -12,7 +12,7 @@ var DB *gorm.DB
 
 func Connect() {
 	//connecting to the mysql database
-	var dsn = os.Getenv("DATABASE_URL")
+	var dsn = os.Getenv("LOCAL_DATABASE_URL")
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	DB = db
 	if err != nil {
