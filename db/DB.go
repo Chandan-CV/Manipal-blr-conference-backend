@@ -19,7 +19,7 @@ func Connect() {
 		panic("Could not connect to the database")
 	}
 
-	//connecting to the sqlite database
+	// connecting to the sqlite database
 	// db, err := gorm.Open(sqlite.Open("MaheblrConference.db"), &gorm.Config{})
 	// DB = db
 	// if err != nil {

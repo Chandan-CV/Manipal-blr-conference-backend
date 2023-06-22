@@ -36,10 +36,19 @@ type Event struct {
 
 type Attendance struct {
 	gorm.Model
-	ID      uint  `json:"id" gorm:"primary_key"`
-	EventID uint  `json:"event_id" gorm:"not null"`
-	UserID  uint  `json:"user_id" gorm:"not null"`
-	Event   Event `json:"event" gorm:"not null"`
-	User    User  `json:"user" gorm:"not null"`
-	IsFood  bool  `json:"is_food"`
+	ID      uint `json:"id" gorm:"primary_key"`
+	EventID uint `json:"event_id" gorm:"not null"`
+	UserID  uint `json:"user_id" gorm:"not null"`
+	IsFood  bool `json:"is_food"`
+}
+
+type EventJWT struct {
+	ID     uint   `json:"id"`
+	IsFood bool   `json:"is_food"`
+	Name   string `json:"name"`
+	JWT    string `json:"jwt"`
+}
+
+type AttendanceBody struct {
+	JWT string `json:"jwt"`
 }

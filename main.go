@@ -29,6 +29,8 @@ func main() {
 	r.POST("/login", handlers.Login)
 	r.GET("/logout", handlers.Logout)
 	r.GET("/validate", middlewares.ReqAuth, handlers.Validate)
+	r.GET("/getEventJWTs", handlers.GetEventJWTs)
+	r.POST("/markAttendance", middlewares.ReqAuth, handlers.MarkAttendance)
 	r.Static("/docs", "./docs")
 
 	port := os.Getenv("PORT")
