@@ -17,6 +17,7 @@ func ReqAuth(c *gin.Context) {
 
 	// get the token from the header
 	cookie, err := c.Cookie("Authorization")
+	fmt.Println("this is the cookie: " + cookie)
 
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
