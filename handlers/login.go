@@ -57,7 +57,7 @@ func Login(c *gin.Context) {
 	}
 
 	//send the token to the user as a cookie
-	c.SetSameSite(http.SameSiteDefaultMode)
+	c.SetSameSite(http.SameSiteNoneMode)
 	c.SetCookie("Authorization", s, 3600*24*30, "/", "", false, true)
 
 	c.JSON(http.StatusOK, gin.H{"message": "user logged in! and token sent as a cookie"})
