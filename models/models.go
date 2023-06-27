@@ -52,3 +52,10 @@ type EventJWT struct {
 type AttendanceBody struct {
 	JWT string `json:"jwt"`
 }
+
+type GetAttendancesResponse struct {
+	ID        uint   `json:"id"`
+	CreatedAt string `json:"created_at"`
+	IsFood    bool   `json:"is_food"`
+	Name      string `json:"name"`
+}
